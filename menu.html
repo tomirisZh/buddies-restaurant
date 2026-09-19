@@ -10,7 +10,7 @@
 
     <header id="main-header">
         <div class="logo">
-        <a href="index.html">Buddies Restaurant</a>
+            <a href="index.html">Buddies Restaurant</a>
         </div>
         <nav class="nav-menu">
             <a href="index.html">Home</a>
@@ -23,29 +23,118 @@
     </header>
 
     <main>
-        <h2>Our Menu</h2>
-        <p>Explore our delicious offerings across all main courses, appetizers, and beverages.</p>
+        <h2>Our Restaurant Menu</h2>
+        <p>Explore our delicious meals, beverages, and special offers below.</p>
 
+        <!-- 1. Первоначальный блок с 3 большими страницами меню -->
         <section class="menu-pages">
             <div class="menu-page-card">
-                <h3>Page 1: Main Dishes</h3>
-                <img src="images/menu-page1.jpg" alt="Menu Page 1 - Main Courses" width="600">
+                <h3>Main Dishes & Starters</h3>
+                <img src="images/menu-page1.jpg" alt="Menu Page 1 - Main Dishes">
             </div>
 
             <div class="menu-page-card">
-                <h3>Page 2: Appetizers & Starters</h3>
-                <img src="images/menu-page2.jpg" alt="Menu Page 2 - Appetizers" width="600">
+                <h3>Desserts & Beverages</h3>
+                <img src="images/menu-page2.jpg" alt="Menu Page 2 - Desserts and Drinks">
             </div>
 
             <div class="menu-page-card">
-                <h3>Page 3: Drinks & Beverages</h3>
-                <img src="images/menu-page3.jpg" alt="Menu Page 3 - Beverages and Drinks" width="600">
+                <h3>Special Chef Offers</h3>
+                <img src="images/menu-page3.jpg" alt="Menu Page 3 - Special Offers">
+            </div>
+        </section>
+
+        <!-- Заголовок для блока с хитами продаж -->
+        <section style="text-align: center; margin-top: 45px; margin-bottom: 15px;">
+            <h3>Guest Favorites</h3>
+            <p>Discover the most loved dishes selected by our guests this season.</p>
+        </section>
+
+        <!-- 2. Новый блок с Flexbox-карточками (Хиты продаж) и ценами в тенге -->
+        <section class="menu-container">
+            <article class="food-card">
+                <img src="images/dish1.jpg" alt="Signature Ribeye Steak">
+                <div class="food-info">
+                    <h3>Signature Ribeye Steak</h3>
+                    <p>Tender grilled beef served with garlic butter, rosemary, and seasonal roasted vegetables.</p>
+                    <span class="price">12 500 ₸</span>
+                </div>
+            </article>
+
+            <article class="food-card">
+                <img src="images/dish2.jpg" alt="Creamy Fettuccine Pasta">
+                <div class="food-info">
+                    <h3>Creamy Fettuccine Pasta</h3>
+                    <p>Homemade fettuccine with wild mushrooms, parmesan cheese, and creamy garlic sauce.</p>
+                    <span class="price">4 800 ₸</span>
+                </div>
+            </article>
+
+            <article class="food-card">
+                <img src="images/dish3.jpg" alt="Berry Cheesecake Dessert">
+                <div class="food-info">
+                    <h3>Berry Cheesecake</h3>
+                    <p>Classic New York cheesecake topped with fresh mint leaves and wild forest berry syrup.</p>
+                    <span class="price">2 900 ₸</span>
+                </div>
+            </article>
+        </section>
+
+        <!-- 3. Форма предзаказа -->
+        <section class="form-section">
+            <h3>Pre-Order Your Meal</h3>
+            <form class="custom-form" id="order-form">
+                <div class="form-group">
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dish-select">Select Primary Dish / Category:</label>
+                    <select id="dish-select">
+                        <option value="steak">Signature Ribeye Steak (12 500 ₸)</option>
+                        <option value="pasta">Creamy Fettuccine Pasta (4 800 ₸)</option>
+                        <option value="cheesecake">Berry Cheesecake (2 900 ₸)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Dining Option:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="dining-option" value="dine-in" checked> Dine-in</label>
+                        <label><input type="radio" name="dining-option" value="takeaway"> Takeaway</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Special Requests / Dietary Notes:</label>
+                    <textarea id="notes" rows="4" placeholder="Any allergies or special requests?"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Pre-Order</button>
+            </form>
+        </section>
+
+        <!-- 4. Блок информации о разработчике (About the Developer) -->
+        <section class="team-member">
+            <h3>About the Developer</h3>
+            <div class="developer-profile">
+                <img src="images/merey.jpg" alt="Developer Merey">
+                <div>
+                    <h4>Merey Abdymanap</h4>
+                    <p>Hi, I am Merey! I developed the Menu and Gallery pages for Buddies Restaurant using CSS Flexbox and Grid layouts.</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali </p>
+        <p>Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
     </footer>
 
 </body>

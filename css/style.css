@@ -233,38 +233,84 @@ footer {
     grid-area: footer;
 }
 
-/* MENU PAGE AND GALLERY PAGE STYLES (Merey)*/
-.menu-pages {
+/* ==========================================
+   MENU & GALLERY PAGE STYLES (Merey - Assignment 2)
+   ========================================== */
+
+/* --- MENU PAGE (Flexbox Layout) --- */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.food-card {
+    background-color: #ffffff;
+    border: 1px solid #eedad0;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 35px;
-    margin-top: 25px;
-}
-
-.menu-page-card {
-    background-color: #ffffff;
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #eedad0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.menu-page-card h3 {
-    color: #7a3b2e;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.4rem;
+.food-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
-.menu-page-card img {
+.food-card img {
     width: 100%;
-    max-width: 650px;
-    height: auto;
-    border-radius: 6px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    height: 200px;
+    object-fit: cover;
 }
+
+.food-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.food-info h3 {
+    color: #7a3b2e;
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.food-info p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #7a3b2e;
+    margin-bottom: 15px;
+}
+
+.order-btn {
+    background-color: #7a3b2e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.order-btn:hover {
+    background-color: #d99b5f;
+}
+
 
 .gallery-grid {
     display: grid;
@@ -274,47 +320,72 @@ footer {
 }
 
 .gallery-card {
-    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
     border-radius: 8px;
-    border: 1px solid #eedad0;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.gallery-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    height: 230px;
 }
 
 .gallery-card img {
     width: 100%;
-    height: 220px;
+    height: 100%;
     object-fit: cover;
-    border-radius: 6px;
+    display: block;
+    transition: transform 0.4s ease;
 }
 
-.gallery-card p {
-    margin: 10px 0 0 0;
+
+.gallery-card .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(122, 59, 46, 0.88); 
+    color: #ffffff;
+    padding: 12px;
+    text-align: center;
     font-weight: bold;
-    color: #7a3b2e;
+    font-size: 0.95rem;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease-in-out;
 }
+
+
+.gallery-card:hover img {
+    transform: scale(1.08); 
+}
+
+.gallery-card:hover .caption {
+    opacity: 1;
+    transform: translateY(0); 
+}
+
 
 .developer-profile {
     display: flex;
     align-items: center;
     gap: 20px;
+    background-color: #fff8f0;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eedad0;
     margin-top: 15px;
 }
 
 .developer-profile img {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #7a3b2e;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.developer-profile h4 {
+    margin: 0 0 5px 0;
+    color: #7a3b2e;
 }
 
 /* RESERVATION & CONTACT PAGES STYLES (Yenlik) */
