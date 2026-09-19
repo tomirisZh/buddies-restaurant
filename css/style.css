@@ -423,3 +423,91 @@ footer {
     .submit-btn:hover {
         background-color: #d99b5f;
     }
+/* ==========================================
+   Yenlik: Assignment 2 Styles (Grid & Flexbox)
+   ========================================== */
+
+.grid-page-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    gap: 20px;
+}
+
+.grid-header {
+    grid-area: header;
+}
+
+.grid-sidebar {
+    grid-area: sidebar;
+    background-color: #fff8f0;
+    padding: 20px;
+    border-right: 1px solid #eedad0;
+}
+
+.grid-main {
+    grid-area: main;
+    padding: 20px 40px 20px 0;
+}
+
+.grid-footer {
+    grid-area: footer;
+}
+
+.sidebar-box {
+    background: #ffffff;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 6px;
+    border: 1px solid #e0d0c0;
+}
+
+    .sidebar-box h4 {
+        margin: 0 0 5px 0;
+        color: #7a3b2e;
+    }
+
+    .sidebar-box p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+.reservation-info-flex {
+    display: flex;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.flex-info-card {
+    flex: 1;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.contact-cards-flex {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.contact-card {
+    flex: 1;
+    background: #fff8f0;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #eedad0;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+    .contact-card:hover {
+        transform: translateY(-4px);
+    }
