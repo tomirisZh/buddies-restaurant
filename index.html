@@ -4,64 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Buddies Restaurant</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <header id="main-header">
-        <div class="logo">
-            <a href="index.html">Buddies Restaurant</a>
-        </div>
-        <nav class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="menu.html">Menu</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="reservation.html">Reservation</a>
-            <a href="contact.html">Contact</a>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- TASK 5: BOOTSTRAP NAVBAR -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-3" href="index.html">Buddies Restaurant</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-2">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="hero-section">
-            <h2>Welcome to Buddies Restaurant!</h2>
-            <p>Experience the finest dining with unforgettable tastes, warm ambiance, and exceptional service.</p>
-            <img src="images/interior.jfif" alt="Atmospheric interior of Buddies Restaurant" class="hero-img">
+    <!-- TASK 3 & 4: CONTAINER AND SPACING UTILITIES -->
+    <main class="container my-4 my-lg-5 flex-grow-1">
+        <section class="text-center mb-5">
+            <h1 class="text-brand mb-3">Welcome to Buddies Restaurant!</h1>
+            <p class="lead text-muted max-w-75 mx-auto">Experience the finest dining with unforgettable tastes, warm ambiance, and exceptional service.</p>
+            <img src="images/interior.jfif" alt="Atmospheric interior of Buddies Restaurant" class="img-fluid rounded shadow-sm mt-3" style="max-height: 400px; width: 100%; object-fit: cover;">
         </section>
 
-        <!-- TASK 2: FLEXBOX CARD ROW -->
-        <section class="featured-cards">
-            <h3>Our Special Offers</h3>
-            <div class="card-container">
-                <div class="card">
-                    <img src="images/стейк из лосося.jpg" alt="Salmon Steak">
-                    <h4>Salmon Steak with Vegetables</h4>
-                    <p>Tender salmon steak grilled to perfection, served with fresh seasonal vegetables.</p>
-                    <button class="card-btn">Order Now</button>
+        <!-- TASK 2: MEDIA QUERIES CARD GROUP (Mobile 1, Tablet 2, Desktop 3) -->
+        <section class="my-5">
+            <h3 class="text-brand text-center mb-4">Our Special Offers (Pure Media Queries)</h3>
+            <div class="mq-card-row">
+                <div class="mq-card text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <img src="images/стейк из лосося.jpg" alt="Salmon Steak" class="img-fluid rounded mb-3" style="height: 180px; width: 100%; object-fit: cover;">
+                        <h4>Salmon Steak</h4>
+                        <p class="text-muted small">Tender salmon steak grilled to perfection, served with fresh seasonal vegetables.</p>
+                    </div>
+                    <!-- TASK 6: BOOTSTRAP BUTTONS -->
+                    <button class="btn btn-brand w-100 mt-2">Order Now</button>
                 </div>
-                <div class="card">
-                    <img src="images/бешпармак.jpg" alt="Classic Beshbarmak">
-                    <h4>Classic Beshbarmak</h4>
-                    <p>Traditional Kazakh dish made with tender boiled meat, thin homemade pasta sheets, and rich broth.</p>
-                    <button class="card-btn">Order Now</button>
+
+                <div class="mq-card text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <img src="images/бешпармак.jpg" alt="Classic Beshbarmak" class="img-fluid rounded mb-3" style="height: 180px; width: 100%; object-fit: cover;">
+                        <h4>Classic Beshbarmak</h4>
+                        <p class="text-muted small">Traditional Kazakh dish made with tender boiled meat, thin homemade pasta, and broth.</p>
+                    </div>
+                    <button class="btn btn-brand w-100 mt-2">Order Now</button>
                 </div>
-                <div class="card">
-                    <img src="images/коктейль.jpg" alt="Aperol Spritz Cocktail">
-                    <h4>Aperol Spritz Cocktail</h4>
-                    <p>Classic refreshing cocktail with Aperol, Prosecco, soda water, and a slice of fresh orange.</p>
-                    <button class="card-btn">Order Now</button>
+
+                <div class="mq-card text-center d-flex flex-column justify-content-between">
+                    <div>
+                        <img src="images/коктейль.jpg" alt="Aperol Spritz" class="img-fluid rounded mb-3" style="height: 180px; width: 100%; object-fit: cover;">
+                        <h4>Aperol Spritz</h4>
+                        <p class="text-muted small">Classic refreshing cocktail with Aperol, Prosecco, soda water, and fresh orange.</p>
+                    </div>
+                    <button class="btn btn-brand w-100 mt-2">Order Now</button>
                 </div>
             </div>
         </section>
 
-        <section class="highlights">
-            <h3>Why Choose Us?</h3>
-            <p>At Buddies Restaurant, we combine fresh local ingredients with international culinary techniques to bring you extraordinary dishes every single day.</p>
+        <!-- TASK 3: BOOTSTRAP GRID (2 Columns: col-lg-6) -->
+        <section class="bg-light p-4 rounded shadow-sm my-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-3 mb-lg-0">
+                    <h3 class="text-brand">Why Choose Us?</h3>
+                    <p class="mb-0">At Buddies Restaurant, we combine fresh local ingredients with international culinary techniques to bring you extraordinary dishes every single day.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <!-- TASK 6: BUTTON GROUP -->
+                    <div class="btn-group" role="group">
+                        <a href="menu.html" class="btn btn-outline-brand">Explore Menu</a>
+                        <a href="reservation.html" class="btn btn-brand">Book a Table</a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
+    <footer class="py-3 text-center mt-auto">
+        <p class="mb-0">Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
     </footer>
 
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
