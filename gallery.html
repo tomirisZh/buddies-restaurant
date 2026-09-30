@@ -4,86 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Buddies Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    <header id="main-header">
-        <div class="logo">
-            <a href="index.html">Buddies Restaurant</a>
-        </div>
-        <nav class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="menu.html">Menu</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="reservation.html">Reservation</a>
-            <a href="contact.html">Contact</a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-3" href="index.html">Buddies Restaurant</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-2">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <h2>Restaurant Gallery</h2>
-        <p>Take a look at our restaurant atmosphere, special dishes, and cozy events.</p>
+    <main class="container my-4 my-lg-5 flex-grow-1">
+        <div class="text-center mb-4">
+            <h2 class="text-brand">Restaurant Gallery</h2>
+            <p class="text-muted">Take a look at our restaurant atmosphere, special dishes, and cozy events.</p>
+        </div>
 
-        
+        <!-- TASK 7: BOOTSTRAP CAROUSEL (9 IMAGES WITH INDICATORS AND CONTROLS) -->
+        <section class="mb-5">
+            <div id="restaurantCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+                <!-- Indicators -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="4"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="5"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="6"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="7"></button>
+                    <button type="button" data-bs-target="#restaurantCarousel" data-bs-slide-to="8"></button>
+                </div>
 
-        <section class="gallery-grid">
-            <div class="gallery-card">
-                <img src="images/gallery1.jpg" alt="Cozy Interior & Dining Area">
-                <div class="caption">Cozy Interior & Dining Area</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery2.jpg" alt="Chef's Special Dishes">
-                <div class="caption">Chef's Special Dishes</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery3.jpg" alt="Atmospheric Bar">
-                <div class="caption">Atmospheric Bar</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery4.jpg" alt="Summer Terrace">
-                <div class="caption">Summer Outdoor Terrace</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery5.jpg" alt="Signature Desserts">
-                <div class="caption">Signature Desserts</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery6.jpg" alt="Fresh Coffee & Drinks">
-                <div class="caption">Artisanal Drinks & Coffee</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery7.jpg" alt="Chef at Work">
-                <div class="caption">Kitchen Magic in Action</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery8.jpg" alt="VIP Banquet Hall">
-                <div class="caption">VIP Celebration Hall</div>
-            </div>
-            <div class="gallery-card">
-                <img src="images/gallery9.jpg" alt="Window Evening Seating">
-                <div class="caption">Evening Window Seats</div>
+                <!-- Carousel Items (9 Images) -->
+                <div class="carousel-inner" style="height: 480px;">
+                    <div class="carousel-item active h-100">
+                        <img src="images/gallery1.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Cozy Interior">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Cozy Interior & Dining Area</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery2.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Special Dishes">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Chef's Special Dishes</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery3.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Bar">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Atmospheric Bar</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery4.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Summer Terrace">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Summer Outdoor Terrace</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery5.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Signature Desserts">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Signature Desserts</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery6.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Coffee & Drinks">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Artisanal Drinks & Coffee</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery7.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Chef at Work">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Kitchen Magic in Action</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery8.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="VIP Hall">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>VIP Celebration Hall</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <img src="images/gallery9.jpg" class="d-block w-100 h-100" style="object-fit: cover;" alt="Window Seating">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                            <h5>Evening Window Seats</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#restaurantCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
         </section>
 
-
-        
-        <section class="team-member">
-            <h3>About the Developer</h3>
-            <div class="developer-profile">
-                <img src="images/merey.jpg" alt="Developer Merey">
-                <div>
-                    <h4>Merey Abdymanap</h4>
-                    <p>Hi, I am Merey! I developed the Menu and Gallery pages for Buddies Restaurant using CSS Flexbox and Grid layouts.</p>
-                </div>
+        <!-- Developer Profile Section -->
+        <section class="bg-light p-4 rounded border d-flex align-items-center gap-3">
+            <img src="images/merey.jpg" alt="Merey Abdymanap" class="avatar-round">
+            <div>
+                <h4 class="text-brand m-0">Merey Abdymanap</h4>
+                <p class="text-muted small mb-0">Hi, I am Merey! I developed the Menu and Gallery pages for Buddies Restaurant using Bootstrap Grid, Carousel, and Card components.</p>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
+    <footer class="py-3 text-center mt-auto">
+        <p class="mb-0">Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
