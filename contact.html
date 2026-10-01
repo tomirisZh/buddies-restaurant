@@ -4,72 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Buddies Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    <div class="grid-page-container">
-
-        <header id="main-header" class="grid-header">
-            <div class="logo">
-                <a href="index.html">Buddies Restaurant</a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-3" href="index.html">Buddies Restaurant</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-2">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-            <nav class="nav-menu">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="menu.html">Menu</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="reservation.html">Reservation</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </header>
+        </nav>
+    </header>
 
-        <aside class="grid-sidebar">
-            <h3>Find Us Easy</h3>
-            <p>We are located in the heart of Astana. Parking is free for all restaurant guests.</p>
-        </aside>
+    <!-- TASK 3: BOOTSTRAP GRID (Sidebar + Main Contact Section) -->
+    <main class="container my-4 my-lg-5 flex-grow-1">
+        <div class="row g-4">
+            <aside class="col-lg-4">
+                <div class="bg-light p-4 rounded border">
+                    <h3 class="text-brand h4">Find Us Easy</h3>
+                    <p class="text-muted">We are located in the heart of Astana. Parking is free for all restaurant guests.</p>
+                </div>
+            </aside>
 
-        <main class="grid-main">
-            <section class="contact-info-section">
-                <h2>Get in Touch</h2>
+            <section class="col-lg-8">
+                <h2 class="text-brand mb-4">Get in Touch</h2>
 
-                <div class="contact-cards-flex">
-                    <div class="contact-card">
-                        <h4>📍 Address</h4>
-                        <p>Mangilik El Ave 55/11, Astana</p>
+                <!-- Task 3 Grid: 3 Contact Cards -->
+                <div class="row g-3 text-center mb-4">
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded border h-100">
+                            <h5 class="text-brand">📍 Address</h5>
+                            <p class="mb-0 small text-muted">Mangilik El Ave 55/11, Astana</p>
+                        </div>
                     </div>
-                    <div class="contact-card">
-                        <h4>📞 Phone</h4>
-                        <p>+7 (777) 123-45-67</p>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded border h-100">
+                            <h5 class="text-brand">📞 Phone</h5>
+                            <p class="mb-0 small text-muted">+7 (777) 123-45-67</p>
+                        </div>
                     </div>
-                    <div class="contact-card">
-                        <h4>✉️ Email</h4>
-                        <p>info@buddies.kz</p>
+                    <div class="col-md-4">
+                        <div class="p-3 bg-light rounded border h-100">
+                            <h5 class="text-brand">✉️ Email</h5>
+                            <p class="mb-0 small text-muted">info@buddies.kz</p>
+                        </div>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 25px;">
-                    <img src="images/map.png" alt="Map location" style="max-width: 280px; width: 100%; height: auto; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <div class="text-center mb-5">
+                    <img src="images/map.png" alt="Map location" class="img-fluid rounded shadow" style="max-width: 320px;">
                 </div>
-            </section>
 
-            <section class="team-member">
-                <h3>About the Developer</h3>
-                <div class="member-card">
-                    <img src="images/yenlik.jpg" alt="Yenlik - Developer Profile" class="avatar-round">
+                <!-- Developer Section -->
+                <div class="bg-light p-4 rounded border d-flex align-items-center gap-3">
+                    <img src="images/yenlik.jpg" alt="Yenlik Serikkali" class="avatar-round">
                     <div>
-                        <h4>Yenlik Serikkali</h4>
-                        <p>Software Engineering student at AITU. Designed the CSS Grid layouts and Flexbox elements for the Reservation and Contact pages.</p>
+                        <h4 class="text-brand m-0">Yenlik Serikkali</h4>
+                        <p class="text-muted small mb-0">Software Engineering student at AITU. Designed the Bootstrap Grid layout, contact cards, and reservation components.</p>
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
+    </main>
 
-        <footer class="grid-footer">
-            <p>Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
-        </footer>
+    <footer class="py-3 text-center mt-auto">
+        <p class="mb-0">Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
+    </footer>
 
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
