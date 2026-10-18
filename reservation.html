@@ -13,17 +13,26 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold fs-3" href="index.html">Buddies Restaurant</a>
+
+                <!-- TASK 5: Date & Time Badge -->
+                <span id="current-date-time" class="date-time-badge d-none d-md-inline-block ms-3"></span>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav gap-2">
+                    <ul class="navbar-nav gap-2 align-items-center">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
                         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link active" href="reservation.html">Reservation</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+                        <!-- TASK 4: Background Toggle Button -->
+                        <li class="nav-item ms-lg-2">
+                            <button id="change-bg-btn" class="btn btn-sm btn-outline-light">🎨 Change Bg</button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -34,11 +43,39 @@
         <section class="text-center mb-5">
             <h2 class="text-brand">Table Reservation & Services</h2>
             <p class="text-muted">Plan your visit in advance to enjoy a smooth dining experience with us.</p>
-            <img src="images/restaurant-banner.jfif" alt="Cozy dining table setup" class="img-fluid rounded shadow-sm mt-2" style="max-height: 350px; width: 100%; object-fit: cover;">
+
+            <!-- TASK 3: POPUP LAUNCH BUTTON -->
+            <button id="open-popup-btn" class="btn btn-brand btn-lg my-2 shadow-sm">📩 Subscribe for VIP Discounts</button>
         </section>
 
-        <!-- TASK 3: BOOTSTRAP GRID (2 Columns: col-md-6) -->
-        <section class="row g-4">
+        <!-- TASK 2: CUSTOM ACCORDION FOR FAQS -->
+        <section class="my-5 max-w-75 mx-auto">
+            <h3 class="text-brand text-center mb-4">Frequently Asked Questions</h3>
+
+            <div class="custom-accordion-item">
+                <div class="custom-accordion-header">How far in advance should I book a table?</div>
+                <div class="custom-accordion-body">
+                    <p class="mb-0 text-muted">We recommend reserving at least 24 hours in advance for weekdays and 48 hours for weekend evening dining.</p>
+                </div>
+            </div>
+
+            <div class="custom-accordion-item">
+                <div class="custom-accordion-header">Is there a dress code at Buddies Restaurant?</div>
+                <div class="custom-accordion-body">
+                    <p class="mb-0 text-muted">Our dress code is smart casual. We want our guests to feel comfortable while maintaining an elegant atmosphere.</p>
+                </div>
+            </div>
+
+            <div class="custom-accordion-item">
+                <div class="custom-accordion-header">Do you accommodate dietary restrictions and allergies?</div>
+                <div class="custom-accordion-body">
+                    <p class="mb-0 text-muted">Yes! Our chefs can adapt most dishes for vegetarian, vegan, or gluten-free diets. Please inform us when reserving.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Standard Grid Content -->
+        <section class="row g-4 my-4">
             <div class="col-md-6">
                 <div class="p-4 bg-light rounded border h-100">
                     <h3 class="text-brand h4 mb-3">How to Reserve Your Table</h3>
@@ -65,10 +102,27 @@
         </section>
     </main>
 
+    <!-- TASK 3: POPUP SUBSCRIPTION MODAL -->
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup-card">
+            <button id="close-popup-btn" class="popup-close-btn">&times;</button>
+            <h3 class="text-brand mb-2">Join Our VIP Club</h3>
+            <p class="text-muted small mb-4">Subscribe to receive exclusive offers, event invitations, and 10% off your first reservation.</p>
+            <form onsubmit="event.preventDefault(); alert('Subscribed successfully!'); document.getElementById('popup-overlay').classList.remove('active');">
+                <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="btn btn-brand w-100">Subscribe Now</button>
+            </form>
+        </div>
+    </div>
+
     <footer class="py-3 text-center mt-auto">
         <p class="mb-0">Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
     </footer>
 
+    <!-- JS SCRIPTS AT BOTTOM -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

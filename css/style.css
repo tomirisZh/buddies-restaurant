@@ -239,3 +239,104 @@ footer {
     color: #666;
     cursor: pointer;
 }
+
+/* ==========================================
+   ASSIGNMENT 4: YENLIK STYLES (ACCORDION & POPUP)
+   ========================================== */
+
+/* Task 2: Custom Accordion Styles */
+.custom-accordion-item {
+    border: 1px solid #eedad0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.custom-accordion-header {
+    background-color: #fff8f0;
+    color: #7a3b2e;
+    padding: 15px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+    .custom-accordion-header:hover {
+        background-color: #f7e8db;
+    }
+
+    .custom-accordion-header::after {
+        content: '+';
+        font-size: 1.3rem;
+        transition: transform 0.3s ease;
+    }
+
+.custom-accordion-item.active .custom-accordion-header::after {
+    content: '−';
+}
+
+.custom-accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease-in-out;
+    padding: 0 20px;
+    background-color: #ffffff;
+}
+
+.custom-accordion-item.active .custom-accordion-body {
+    padding: 15px 20px;
+}
+
+/* Task 3: Popup Modal Overlay Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9999;
+}
+
+    .popup-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+.popup-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.popup-overlay.active .popup-card {
+    transform: translateY(0);
+}
+
+.popup-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+}
