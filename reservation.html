@@ -4,57 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation - Buddies Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
-    <header id="main-header">
-        <div class="logo">
-            <a href="index.html">Buddies Restaurant</a>
-        </div>
-        <nav class="nav-menu">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="menu.html">Menu</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="reservation.html">Reservation</a>
-            <a href="contact.html">Contact</a>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-3" href="index.html">Buddies Restaurant</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-2">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="reservation.html">Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="reservation-intro">
-            <h2>Table Reservation & Services</h2>
-            <p>Plan your visit in advance to enjoy a smooth dining experience with us.</p>
-            <img src="images\restaurant-banner.jfif" alt="Cozy dining table setup at Buddies Restaurant" class="hero-img">
+    <main class="container my-4 my-lg-5 flex-grow-1">
+        <section class="text-center mb-5">
+            <h2 class="text-brand">Table Reservation & Services</h2>
+            <p class="text-muted">Plan your visit in advance to enjoy a smooth dining experience with us.</p>
+            <img src="images/restaurant-banner.jfif" alt="Cozy dining table setup" class="img-fluid rounded shadow-sm mt-2" style="max-height: 350px; width: 100%; object-fit: cover;">
         </section>
 
-        <div class="reservation-info-flex">
-            <section class="reservation-steps flex-info-card">
-                <h3>How to Reserve Your Table</h3>
-                <ol class="steps-list">
-                    <li>Choose your preferred date and time slot.</li>
-                    <li>Select the number of guests in your party.</li>
-                    <li>Contact our reception via phone or the online form.</li>
-                    <li>Receive an instant confirmation email or SMS.</li>
-                </ol>
-            </section>
+        <!-- TASK 3: BOOTSTRAP GRID (2 Columns: col-md-6) -->
+        <section class="row g-4">
+            <div class="col-md-6">
+                <div class="p-4 bg-light rounded border h-100">
+                    <h3 class="text-brand h4 mb-3">How to Reserve Your Table</h3>
+                    <ol class="ps-3 mb-0 text-muted">
+                        <li class="mb-2">Choose your preferred date and time slot.</li>
+                        <li class="mb-2">Select the number of guests in your party.</li>
+                        <li class="mb-2">Contact our reception via phone or the online form.</li>
+                        <li class="mb-0">Receive an instant confirmation email or SMS.</li>
+                    </ol>
+                </div>
+            </div>
 
-            <section class="extra-services flex-info-card">
-                <h3>Included Dining Services</h3>
-                <ul class="services-list">
-                    <li>Complimentary welcome drinks for reserved guests</li>
-                    <li>Dedicated VIP seating options upon request</li>
-                    <li>Customized birthday and anniversary table decor</li>
-                    <li>Valet parking service at the main entrance</li>
-                </ul>
-            </section>
-        </div>
+            <div class="col-md-6">
+                <div class="p-4 bg-light rounded border h-100">
+                    <h3 class="text-brand h4 mb-3">Included Dining Services</h3>
+                    <ul class="ps-3 mb-0 text-muted">
+                        <li class="mb-2">Complimentary welcome drinks for reserved guests</li>
+                        <li class="mb-2">Dedicated VIP seating options upon request</li>
+                        <li class="mb-2">Customized birthday and anniversary table decor</li>
+                        <li class="mb-0">Valet parking service at the main entrance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <p>Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
+    <footer class="py-3 text-center mt-auto">
+        <p class="mb-0">Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
