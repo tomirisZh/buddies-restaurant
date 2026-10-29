@@ -10,15 +10,14 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
+    <!-- Header -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold fs-3" href="index.html">Buddies Restaurant</a>
                 
-                <!-- TASK 5: Live Date & Time Display -->
-                <div class="d-none d-md-block ms-3">
-                    <span id="current-date-time" class="date-time-badge">Loading date...</span>
-                </div>
+                <!-- Live Date & Time -->
+                <span id="current-date-time" class="date-time-badge d-none d-md-inline-block ms-3"></span>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -31,9 +30,10 @@
                         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        <!-- TASK 4: Background Change Button -->
+                        
+                        <!-- Day/Night Theme Toggle Button -->
                         <li class="nav-item ms-lg-2">
-                            <button id="change-bg-btn" class="btn btn-sm btn-outline-light">🎨 Change Bg</button>
+                            <button id="theme-toggle-btn" class="btn btn-sm btn-outline-light">☀️ Day</button>
                         </li>
                     </ul>
                 </div>
@@ -42,95 +42,42 @@
     </header>
 
     <main class="container my-4 my-lg-5 flex-grow-1">
-        <div class="text-center mb-5">
-            <h2 class="text-brand">Our Restaurant Menu</h2>
-            <p class="text-muted">Explore our delicious meals, beverages, and special offers below.</p>
+        <div class="text-center mb-4">
+            <h2 class="text-brand">Interactive Restaurant Menu</h2>
+            <p class="text-muted">Explore our delicious meals, beverages, and filter them dynamically.</p>
         </div>
 
-        <!-- 1. Страницы меню -->
-        <section class="row g-4 mb-5">
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="images/menu-page1.jpg" class="card-img-top" alt="Main Dishes" style="height: 200px; object-fit: cover;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-brand">Main Dishes & Starters</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="images/menu-page2.jpg" class="card-img-top" alt="Desserts" style="height: 200px; object-fit: cover;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-brand">Desserts & Beverages</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm">
-                    <img src="images/menu-page3.jpg" class="card-img-top" alt="Special Offers" style="height: 200px; object-fit: cover;">
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-brand">Special Chef Offers</h5>
-                    </div>
-                </div>
+        <!-- Category Filter Buttons -->
+        <div class="d-flex justify-content-center gap-2 mb-4 flex-wrap">
+            <button class="btn btn-brand filter-btn active" data-category="all">All Items</button>
+            <button class="btn btn-outline-brand filter-btn" data-category="main">Main Dishes</button>
+            <button class="btn btn-outline-brand filter-btn" data-category="dessert">Desserts</button>
+            <button class="btn btn-outline-brand filter-btn" data-category="drinks">Drinks</button>
+        </div>
+
+        <!-- Dynamic Menu Grid Container (Generated via JS) -->
+        <section id="dynamic-menu-container" class="row g-4 mb-5">
+            <!-- Items injected automatically from script.js -->
+        </section>
+
+        <!-- Star Rating Component -->
+        <section class="bg-light p-4 rounded border text-center mb-5">
+            <h4 class="text-brand mb-2">Rate Your Dining Experience</h4>
+            <p class="text-muted small">Click a star to leave your feedback:</p>
+            <div class="star-rating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+                <span class="rating-value">(0/5 Stars)</span>
             </div>
         </section>
 
-        <!-- 2. Хиты продаж -->
-        <section class="mb-5">
-            <div class="text-center mb-4">
-                <h3 class="text-brand">Guest Favorites</h3>
-                <p class="text-muted">Discover the most loved dishes selected by our guests this season.</p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="images/dish1.jpg" class="card-img-top" alt="Ribeye Steak" style="height: 200px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-brand">Signature Ribeye Steak</h5>
-                            <p class="card-text text-muted flex-grow-1">Tender grilled beef served with garlic butter, rosemary, and seasonal roasted vegetables.</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="fw-bold fs-5 text-brand">12 500 ₸</span>
-                                <button class="btn btn-brand btn-sm">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="images/dish2.jpg" class="card-img-top" alt="Fettuccine Pasta" style="height: 200px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-brand">Creamy Fettuccine Pasta</h5>
-                            <p class="card-text text-muted flex-grow-1">Homemade fettuccine with wild mushrooms, parmesan cheese, and creamy garlic sauce.</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="fw-bold fs-5 text-brand">4 800 ₸</span>
-                                <button class="btn btn-brand btn-sm">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <img src="images/dish3.jpg" class="card-img-top" alt="Berry Cheesecake" style="height: 200px; object-fit: cover;">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title text-brand">Berry Cheesecake</h5>
-                            <p class="card-text text-muted flex-grow-1">Classic New York cheesecake topped with fresh mint leaves and wild forest berry syrup.</p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="fw-bold fs-5 text-brand">2 900 ₸</span>
-                                <button class="btn btn-brand btn-sm">Order</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. TASK 1: FORM VALIDATION SECTION (Merey) -->
+        <!-- Pre-Order Form with Validation and Reset -->
         <section class="bg-light p-4 p-md-5 rounded border mb-5">
             <h3 class="text-brand mb-2">Pre-Order Your Meal</h3>
-            <p class="text-muted small mb-4">Please fill out all required fields to confirm your pre-order.</p>
+            <p class="text-muted small mb-4">Please fill out the form below to place your pre-order.</p>
 
             <div id="form-success-msg" class="alert alert-success d-none" role="alert">
                 🎉 Order submitted successfully! We will contact you shortly.
@@ -151,55 +98,36 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label for="access-code" class="form-label fw-bold">Order Access Code / Password (Min 6 chars) *</label>
+                        <label for="access-code" class="form-label fw-bold">Order Code (Min 6 chars) *</label>
                         <input type="password" class="form-control" id="access-code" placeholder="Create a code">
                         <span id="pass-error" class="error-message"></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="confirm-code" class="form-label fw-bold">Confirm Access Code *</label>
+                        <label for="confirm-code" class="form-label fw-bold">Confirm Code *</label>
                         <input type="password" class="form-control" id="confirm-code" placeholder="Repeat your code">
                         <span id="confirm-error" class="error-message"></span>
                     </div>
 
-                    <div class="col-md-6">
-                        <label for="dish-select" class="form-label fw-bold">Select Dish</label>
-                        <select class="form-select" id="dish-select">
-                            <option value="steak">Signature Ribeye Steak (12 500 ₸)</option>
-                            <option value="pasta">Creamy Fettuccine Pasta (4 800 ₸)</option>
-                            <option value="cheesecake">Berry Cheesecake (2 900 ₸)</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label fw-bold d-block">Dining Option</label>
-                        <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="dining-option" id="dine-in" value="dine-in" checked>
-                            <label class="form-check-label" for="dine-in">Dine-in</label>
-                        </div>
-                        <div class="form-check form-check-inline mt-2">
-                            <input class="form-check-input" type="radio" name="dining-option" id="takeaway" value="takeaway">
-                            <label class="form-check-label" for="takeaway">Takeaway</label>
-                        </div>
-                    </div>
-
-                    <div class="col-12 mt-4">
-                        <button type="submit" class="btn btn-brand w-100 py-2">Submit Pre-Order</button>
+                    <div class="col-12 d-flex gap-2 mt-4">
+                        <button type="submit" class="btn btn-brand flex-grow-1 py-2">Submit Pre-Order</button>
+                        <button type="button" id="reset-form-btn" class="btn btn-outline-secondary py-2">Reset Form</button>
                     </div>
                 </div>
             </form>
         </section>
 
-        <!-- 4. Developer Section -->
+        <!-- Developer Section -->
         <section class="bg-light p-4 rounded border d-flex align-items-center gap-3">
-            <img src="images/merey.jpg" alt="Merey Abdymanap" class="avatar-round">
+            <img src="images/merey.jpg" alt="Developer Merey" class="avatar-round">
             <div>
                 <h4 class="text-brand m-0">Merey Abdymanap</h4>
-                <p class="text-muted small mb-0">Implemented client-side JavaScript form validation including regex email matching, password length restrictions, and dynamic error messaging.</p>
+                <p class="text-muted small mb-0">Hi, I am Merey! I developed the Menu and Gallery pages featuring dynamic JavaScript filtering, star rating components, and form validation.</p>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="py-3 text-center mt-auto">
         <p class="mb-0">Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
     </footer>
