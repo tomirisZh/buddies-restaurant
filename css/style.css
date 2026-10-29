@@ -1,3 +1,7 @@
+/* ==========================================================================
+   BUDDIES RESTAURANT - COMPLETE STYLESHEET (Assignment 3, 4, 5)
+   Team: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali
+   ========================================================================== */
 
 :root {
     --primary-color: #7a3b2e;
@@ -10,11 +14,12 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #fdfbf7;
     color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
-/* --------------------------------------------------------------------------
-   TASK 1 (A3): RESPONSIVE TYPOGRAPHY (MEDIA QUERIES)
-   -------------------------------------------------------------------------- */
+/* --- RESPONSIVE TYPOGRAPHY (Task 1 - A3) --- */
 html {
     font-size: 14px;
 }
@@ -31,13 +36,7 @@ html {
     }
 }
 
-h1, .h1 { font-size: calc(1.5rem + 1.5vw); }
-h2, .h2 { font-size: calc(1.3rem + 1vw); }
-h3, .h3 { font-size: calc(1.1rem + 0.5vw); }
-
-/* --------------------------------------------------------------------------
-   BRAND CUSTOMIZATIONS & BOOTSTRAP OVERRIDES
-   -------------------------------------------------------------------------- */
+/* --- BRAND COLOR OVERRIDES --- */
 .bg-brand {
     background-color: var(--primary-color) !important;
 }
@@ -52,20 +51,20 @@ h3, .h3 { font-size: calc(1.1rem + 0.5vw); }
     border: none;
 }
 
-.btn-brand:hover {
-    background-color: var(--accent-color);
-    color: #ffffff;
-}
+    .btn-brand:hover {
+        background-color: var(--accent-color);
+        color: #ffffff;
+    }
 
 .btn-outline-brand {
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
 
-.btn-outline-brand:hover {
-    background-color: var(--primary-color);
-    color: #ffffff;
-}
+    .btn-outline-brand:hover {
+        background-color: var(--primary-color);
+        color: #ffffff;
+    }
 
 footer {
     background-color: var(--dark-bg);
@@ -80,9 +79,7 @@ footer {
     border: 3px solid var(--primary-color);
 }
 
-/* --------------------------------------------------------------------------
-   TASK 2 (A3): CUSTOM MEDIA QUERIES CARD ROW (Index Page)
-   -------------------------------------------------------------------------- */
+/* --- PURE MEDIA QUERIES CARD ROW (Task 2 - A3) --- */
 .mq-card-row {
     display: flex;
     flex-wrap: wrap;
@@ -91,7 +88,7 @@ footer {
 }
 
 .mq-card {
-    flex: 1 1 100%; /* Mobile: Stacked vertically */
+    flex: 1 1 100%; /* Mobile: 1 per row */
     background: #ffffff;
     border: 1px solid #eedad0;
     border-radius: 8px;
@@ -111,13 +108,7 @@ footer {
     }
 }
 
-/* ==========================================================================
-   ASSIGNMENT 4 JAVASCRIPT UI COMPONENTS
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   TOMIRIS TASKS: DATE/TIME WIDGET & BACKGROUND SWITCHER
-   -------------------------------------------------------------------------- */
+/* --- DATE & TIME BADGE --- */
 .date-time-badge {
     background-color: rgba(255, 255, 255, 0.2);
     color: #ffffff;
@@ -127,20 +118,15 @@ footer {
     font-weight: 500;
 }
 
-/* --------------------------------------------------------------------------
-   MEREY TASKS: FORM VALIDATION ERRORS (menu.html)
-   -------------------------------------------------------------------------- */
+/* --- FORM VALIDATION ERRORS --- */
 .error-message {
     color: #dc3545;
     font-size: 0.85rem;
     margin-top: 4px;
     display: block;
-    font-weight: 500;
 }
 
-/* --------------------------------------------------------------------------
-   YENLIK TASKS: CUSTOM ACCORDION (reservation.html)
-   -------------------------------------------------------------------------- */
+/* --- CUSTOM ACCORDION (Yenlik - A4) --- */
 .custom-accordion-item {
     border: 1px solid #eedad0;
     border-radius: 8px;
@@ -152,110 +138,6 @@ footer {
 .custom-accordion-header {
     background-color: #fff8f0;
     color: var(--primary-color);
-    padding: 15px 20px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    transition: background-color 0.3s ease;
-}
-
-.custom-accordion-header:hover {
-    background-color: #f7e8db;
-}
-
-.custom-accordion-header::after {
-    content: '+';
-    font-size: 1.3rem;
-    transition: transform 0.3s ease;
-}
-
-.custom-accordion-item.active .custom-accordion-header::after {
-    content: '−';
-}
-
-.custom-accordion-body {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
-    padding: 0 20px;
-    background-color: #ffffff;
-}
-
-.custom-accordion-item.active .custom-accordion-body {
-    padding: 15px 20px;
-    transition: max-height 0.35s ease-in-out;
-}
-
-/* --------------------------------------------------------------------------
-   YENLIK TASKS: POPUP MODAL OVERLAY (reservation.html / contact.html)
-   -------------------------------------------------------------------------- */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 9999;
-}
-
-.popup-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.popup-card {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 480px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    position: relative;
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
-}
-
-.popup-overlay.active .popup-card {
-    transform: translateY(0);
-}
-
-.popup-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #666;
-    cursor: pointer;
-}
-
-/* ==========================================
-   ASSIGNMENT 4: YENLIK STYLES (ACCORDION & POPUP)
-   ========================================== */
-
-/* Task 2: Custom Accordion Styles */
-.custom-accordion-item {
-    border: 1px solid #eedad0;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    background-color: #ffffff;
-    overflow: hidden;
-}
-
-.custom-accordion-header {
-    background-color: #fff8f0;
-    color: #7a3b2e;
     padding: 15px 20px;
     font-weight: bold;
     cursor: pointer;
@@ -283,16 +165,17 @@ footer {
 .custom-accordion-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease-in-out;
+    transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
     padding: 0 20px;
     background-color: #ffffff;
 }
 
 .custom-accordion-item.active .custom-accordion-body {
     padding: 15px 20px;
+    transition: max-height 0.35s ease-in-out;
 }
 
-/* Task 3: Popup Modal Overlay Styles */
+/* --- POPUP MODAL OVERLAY (Yenlik - A4) --- */
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -320,7 +203,7 @@ footer {
     border-radius: 12px;
     width: 90%;
     max-width: 480px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     position: relative;
     transform: translateY(-20px);
     transition: transform 0.3s ease;
@@ -339,4 +222,79 @@ footer {
     font-size: 1.5rem;
     color: #666;
     cursor: pointer;
+}
+
+/* ==========================================================================
+   ASSIGNMENT 5 STYLES (DARK THEME, STARS, ANIMATIONS)
+   ========================================================================== */
+
+/* Dark Theme Toggle Styles */
+body.dark-theme {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+    body.dark-theme .bg-light,
+    body.dark-theme .card,
+    body.dark-theme .custom-accordion-item,
+    body.dark-theme .popup-card {
+        background-color: #1e1e1e !important;
+        color: #ffffff !important;
+        border-color: #333333 !important;
+    }
+
+    body.dark-theme .text-muted {
+        color: #b0b0b0 !important;
+    }
+
+    body.dark-theme .table {
+        color: #ffffff !important;
+        background-color: #1e1e1e !important;
+    }
+
+/* Star Rating System */
+.star-rating {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.star {
+    color: #ccc;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+    .star:hover, .star.selected {
+        color: #ffc107;
+        transform: scale(1.2);
+    }
+
+.rating-value {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin-left: 10px;
+}
+
+/* Read More / Read Less Text hidden state */
+.more-text {
+    display: none;
+}
+
+/* Card Animation Trigger */
+.animate-card {
+    animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
