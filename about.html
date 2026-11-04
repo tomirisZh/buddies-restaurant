@@ -6,6 +6,8 @@
     <title>About Us - Buddies Restaurant</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- jQuery CDN (Required for Assignment 6) -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -95,6 +97,26 @@
                 </div>
             </section>
         </div>
+
+        <!-- TASK 5: Animated Number Counter Section -->
+        <section id="stats-counter-section" class="py-5 bg-brand text-white text-center rounded my-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h2 class="display-4 fw-bold counter-number" data-count="1500">0</h2>
+                        <p class="lead">Happy Guests</p>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h2 class="display-4 fw-bold counter-number" data-count="25">0</h2>
+                        <p class="lead">Chef Recipes</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h2 class="display-4 fw-bold counter-number" data-count="10">0</h2>
+                        <p class="lead">Years of Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="py-3 text-center mt-auto">
@@ -102,5 +124,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
