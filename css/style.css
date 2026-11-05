@@ -1,10 +1,16 @@
-.bg-brand {
-    background-color: #7a3b2e !important;
-}
-
+.bg-brand,
 header nav.navbar {
     background-color: #7a3b2e !important;
 }
+
+    header nav.navbar .navbar-brand,
+    header nav.navbar .nav-link {
+        color: #ffffff !important;
+    }
+
+        header nav.navbar .nav-link:hover {
+            color: #d99b5f !important;
+        }
 :root {
     --primary-color: #7a3b2e;
     --accent-color: #d99b5f;
