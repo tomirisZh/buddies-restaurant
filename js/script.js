@@ -177,7 +177,6 @@ $(document).ready(function () {
         });
     }
 
-<<<<<<< HEAD
     // --- Task 5: Animated Number Counter ---
     let counterAnimated = false;
     function checkCounterAnimation() {
@@ -205,11 +204,9 @@ $(document).ready(function () {
     }
     $(window).on('scroll', checkCounterAnimation);
     checkCounterAnimation();
-=======
     $(window).on('scroll resize', lazyLoadImages);
     lazyLoadImages();
 
     // Click sound integration
     $('button, .btn, .nav-link').on('click', () => sounds.playClickSound());
->>>>>>> ed7729c21c76f03da4ab6e92fe18c77b6b241a0c
 });
