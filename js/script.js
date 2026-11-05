@@ -326,4 +326,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return greeting;
     }
+
+    // --- Task 5: Animated Number Counter ---
+    let counterAnimated = false;
+    function checkCounterAnimation() {
+        const $counterSection = $('#stats-counter-section');
+        if ($counterSection.length === 0) return;
+
+        const oTop = $counterSection.offset().top - window.innerHeight + 100;
+        if (!counterAnimated && $(window).scrollTop() > oTop) {
+            counterAnimated = true;
+            $('.counter-number').each(function() {
+                const $this = $(this);
+                const countTo = parseInt($this.attr('data-count'));
+                $({ countNum: 0 }).animate({ countNum: countTo }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function() {
+                        $this.text(Math.floor(this.countNum));
+                    },
+                    complete: function() {
+                        $this.text(this.countNum + '+');
+                    }
+                });
+            });
+        }
+    }
+    $(window).on('scroll', checkCounterAnimation);
+    checkCounterAnimation();
 });
