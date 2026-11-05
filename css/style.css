@@ -1,5 +1,6 @@
-.bg-brand,
-header nav.navbar {
+header nav.navbar,
+.navbar.bg-brand,
+.bg-brand {
     background-color: #7a3b2e !important;
 }
 
@@ -27,9 +28,19 @@ body {
     padding: 0;
 }
 
-.bg-brand {
+.bg-brand,
+header nav.navbar {
     background-color: var(--primary-color) !important;
 }
+
+    header nav.navbar .navbar-brand,
+    header nav.navbar .nav-link {
+        color: #ffffff !important;
+    }
+
+        header nav.navbar .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
 
 .text-brand {
     color: var(--primary-color) !important;
