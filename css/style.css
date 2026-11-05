@@ -1,3 +1,10 @@
+.bg-brand {
+    background-color: #7a3b2e !important;
+}
+
+header nav.navbar {
+    background-color: #7a3b2e !important;
+}
 :root {
     --primary-color: #7a3b2e;
     --accent-color: #d99b5f;
@@ -119,10 +126,3 @@ body.dark-theme {
     body.dark-theme .text-muted {
         color: #b0b0b0 !important;
     }
-.bg-brand {
-    background-color: #7a3b2e !important;
-}
-
-header nav.navbar {
-    background-color: #7a3b2e !important;
-}
