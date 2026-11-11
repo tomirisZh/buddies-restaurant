@@ -1,7 +1,13 @@
+/* ==========================================================================
+   BUDDIES RESTAURANT - FINAL PROJECT & ASSIGNMENT COMPLETE JS CODE
+   Team: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali
+   ========================================================================== */
+
 $(document).ready(function () {
+    console.log("Buddies Restaurant JS & jQuery initialized successfully.");
 
     /* ----------------------------------------------------------------------
-       REQUIREMENT 3: LIGHT & DARK MODES WITH LOCALSTORAGE
+       1. LIGHT & DARK MODES WITH LOCALSTORAGE (Requirement 3)
        ---------------------------------------------------------------------- */
     const savedTheme = localStorage.getItem('buddies_theme') || 'light';
     if (savedTheme === 'dark') {
@@ -18,10 +24,22 @@ $(document).ready(function () {
     });
 
     /* ----------------------------------------------------------------------
-       REQUIREMENT 5.1 & 5.2: AUTHENTICATION SIMULATION & FORM VALIDATION
+       2. AUTHENTICATION & FORM SWITCHING (Requirement 5.1)
        ---------------------------------------------------------------------- */
-    
-    // Check user login status on page load
+    $('#show-login-btn').on('click', function(e) {
+        e.preventDefault();
+        $('#signup-wrapper').addClass('d-none');
+        $('#login-wrapper').removeClass('d-none');
+        $('.error-message').text('');
+    });
+
+    $('#show-signup-btn').on('click', function(e) {
+        e.preventDefault();
+        $('#login-wrapper').addClass('d-none');
+        $('#signup-wrapper').removeClass('d-none');
+        $('.error-message').text('');
+    });
+
     function checkAuthStatus() {
         const loggedUser = JSON.parse(localStorage.getItem('buddies_logged_user'));
         if (loggedUser) {
@@ -30,7 +48,7 @@ $(document).ready(function () {
             $('#profile-display-name').text(loggedUser.name);
             $('#profile-display-email').text(loggedUser.email);
             $('#profile-display-phone').text(loggedUser.phone || 'Not provided');
-            $('#profile-created-date').text(loggedUser.createdDate || '18.11.2026');
+            $('#profile-created-date').text(loggedUser.createdDate || 'Today');
             $('#nav-profile-link').text(`Account (${loggedUser.name.split(' ')[0]})`);
         } else {
             $('#auth-forms-container').removeClass('d-none');
@@ -40,11 +58,13 @@ $(document).ready(function () {
     }
     checkAuthStatus();
 
-    // Regex Validation Helpers (No HTML5 validation attributes used)
+    /* ----------------------------------------------------------------------
+       3. STRICT FORM VALIDATION WITHOUT HTML5 ATTRIBUTES (Requirement 5.2)
+       ---------------------------------------------------------------------- */
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\+?77\d{9}$/; // Kazakh format +77XXXXXXXXX or 77XXXXXXXXX
+    const phoneRegex = /^\+?77\d{9}$/;
 
-    // Sign Up Submission
+    // Sign Up Validation & LocalStorage Save
     $('#signup-form').on('submit', function (e) {
         e.preventDefault();
         let valid = true;
@@ -71,7 +91,8 @@ $(document).ready(function () {
         if (!phone) {
             $('#signup-phone-error').text('Phone number is required.');
             valid = false;
-        } else if (!phoneRegex.test(phone)) {
+        } else if (!phoneRegex.test(phone))
+            {
             $('#signup-phone-error').text('Phone must match format: +77XXXXXXXXX.');
             valid = false;
         }
@@ -110,7 +131,7 @@ $(document).ready(function () {
         }
     });
 
-    // Log In Submission
+    // Log In Validation & Check
     $('#login-form').on('submit', function (e) {
         e.preventDefault();
         let valid = true;
@@ -149,7 +170,7 @@ $(document).ready(function () {
     });
 
     /* ----------------------------------------------------------------------
-       REQUIREMENT 7: EXTERNAL API INTEGRATION (Open-Meteo Weather API)
+       4. EXTERNAL API INTEGRATION (Open-Meteo Weather API) (Requirement 7)
        ---------------------------------------------------------------------- */
     async function fetchWeather() {
         const $loading = $('#weather-loading');
@@ -159,7 +180,6 @@ $(document).ready(function () {
         if ($('#weather-widget-container').length === 0) return;
 
         try {
-            // Astana Coordinates: lat 51.1694, lon 71.4491
             const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=51.1694&longitude=71.4491&current_weather=true');
             if (!response.ok) throw new Error('API Request Failed');
             
@@ -167,7 +187,7 @@ $(document).ready(function () {
             const currentWeather = data.current_weather;
 
             $('#weather-temp').text(`${currentWeather.temperature} °C`);
-            $('#weather-desc').text(`Wind Speed: ${currentWeather.windspeed} km/h | Weather Code: ${currentWeather.weathercode}`);
+            $('#weather-desc').text(`Astana Wind Speed: ${currentWeather.windspeed} km/h`);
 
             $loading.addClass('d-none');
             $content.removeClass('d-none');
@@ -180,7 +200,7 @@ $(document).ready(function () {
     fetchWeather();
 
     /* ----------------------------------------------------------------------
-       REQUIREMENT 5.3: SEARCH & FILTERING WITH LOCALSTORAGE
+       5. SEARCH & FILTERING WITH LOCALSTORAGE (Requirement 5.3)
        ---------------------------------------------------------------------- */
     const savedFilter = localStorage.getItem('buddies_menu_filter') || 'all';
     
@@ -204,14 +224,44 @@ $(document).ready(function () {
 
     applyMenuFilter(savedFilter);
 
+    // Live Search Filter
+    $('#live-search-input').on('keyup', function() {
+        const query = $(this).val().toLowerCase();
+        $('.searchable-item').each(function() {
+            const text = $(this).text().toLowerCase();
+            if (text.includes(query)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
     /* ----------------------------------------------------------------------
-       REQUIREMENT 6 & JQUERY UI EFFECTS (Date, Scroll, Animations)
+       6. UI EFFECTS, CLOCK & SPINNERS (Requirement 6)
        ---------------------------------------------------------------------- */
-    // Live Clock
     function updateClock() {
         const now = new Date();
         $('#current-date-time').text(now.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }));
     }
     setInterval(updateClock, 1000);
     updateClock();
+
+    // Form submit loading simulation
+    $('.custom-form, #order-form').on('submit', function(e) {
+        e.preventDefault();
+        const $submitBtn = $(this).find('button[type="submit"]');
+        const originalText = $submitBtn.html();
+
+        $submitBtn.prop('disabled', true).html(`
+            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            Processing...
+        `);
+
+        setTimeout(() => {
+            $submitBtn.prop('disabled', false).html(originalText);
+            alert("Action completed successfully!");
+            this.reset();
+        }, 1500);
+    });
 });
