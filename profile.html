@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Auth - Buddies Restaurant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-3" href="index.html">Buddies Restaurant</a>
+                <span id="current-date-time" class="date-time-badge d-none d-md-inline-block ms-3"></span>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-2 align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link active fw-bold text-warning" href="profile.html" id="nav-profile-link">Profile</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <button id="theme-toggle-btn" class="btn btn-sm btn-outline-light">☀️ Day</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-4 my-lg-5 flex-grow-1">
+        
+        <!-- API Widget Section (Requirement 7) -->
+        <section class="mb-5">
+            <div class="card border-0 shadow-sm bg-light">
+                <div class="card-body p-4 text-center" id="weather-widget-container">
+                    <h4 class="text-brand mb-3">🌤️ Restaurant Location Weather (Astana Live API)</h4>
+                    <div id="weather-loading" class="spinner-border text-brand" role="status">
+                        <span class="visually-hidden">Loading weather...</span>
+                    </div>
+                    <div id="weather-content" class="d-none">
+                        <p class="fs-4 fw-bold mb-1" id="weather-temp">-- °C</p>
+                        <p class="text-muted mb-0" id="weather-desc">--</p>
+                        <small class="text-secondary">Powered by Open-Meteo API</small>
+                    </div>
+                    <div id="weather-error" class="alert alert-danger d-none mt-3" role="alert">
+                        Failed to fetch weather data. Please try again later.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Authentication & Profile Forms Section (Requirement 5.1 & 5.2) -->
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Auth Forms (When logged out) -->
+            <div class="col-lg-10" id="auth-forms-container">
+                <div class="row g-4">
+                    <!-- Sign Up Form -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm p-4">
+                            <h3 class="text-brand mb-3">Sign Up</h3>
+                            <!-- novalidate attribute applied (Requirement 5.2) -->
+                            <form id="signup-form" novalidate>
+                                <div class="mb-3">
+                                    <label for="signup-name" class="form-label fw-bold">Full Name</label>
+                                    <input type="text" class="form-control" id="signup-name" placeholder="John Doe">
+                                    <span class="error-message" id="signup-name-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signup-email" class="form-label fw-bold">Email Address</label>
+                                    <input type="text" class="form-control" id="signup-email" placeholder="john@example.com">
+                                    <span class="error-message" id="signup-email-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signup-phone" class="form-label fw-bold">Phone Number (+77XXXXXXXXX)</label>
+                                    <input type="text" class="form-control" id="signup-phone" placeholder="+77011234567">
+                                    <span class="error-message" id="signup-phone-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signup-password" class="form-label fw-bold">Password (Min 6 chars)</label>
+                                    <input type="password" class="form-control" id="signup-password" placeholder="••••••••">
+                                    <span class="error-message" id="signup-password-error"></span>
+                                </div>
+                                <button type="submit" class="btn btn-brand w-100 py-2">Create Account</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Log In Form -->
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm p-4">
+                            <h3 class="text-brand mb-3">Log In</h3>
+                            <form id="login-form" novalidate>
+                                <div class="mb-3">
+                                    <label for="login-email" class="form-label fw-bold">Email Address</label>
+                                    <input type="text" class="form-control" id="login-email" placeholder="john@example.com">
+                                    <span class="error-message" id="login-email-error"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="login-password" class="form-label fw-bold">Password</label>
+                                    <input type="password" class="form-control" id="login-password" placeholder="••••••••">
+                                    <span class="error-message" id="login-password-error"></span>
+                                </div>
+                                <button type="submit" class="btn btn-outline-brand w-100 py-2">Log In</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Dashboard (When logged in) -->
+            <div class="col-lg-8 d-none" id="profile-dashboard">
+                <div class="card shadow-sm p-4 text-center">
+                    <div class="mb-3">
+                        <img src="images/avatar-placeholder.png" alt="User Avatar" class="rounded-circle border border-3 border-brand" style="width: 120px; height: 120px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/120?text=User'">
+                    </div>
+                    <h2 class="text-brand mb-1" id="profile-display-name">User Name</h2>
+                    <p class="text-muted mb-3" id="profile-display-email">user@example.com</p>
+                    
+                    <div class="bg-light p-3 rounded mb-4 text-start">
+                        <p class="mb-2"><strong>Phone:</strong> <span id="profile-display-phone">+7 (000) 000-00-00</span></p>
+                        <p class="mb-2"><strong>Member Status:</strong> <span class="badge bg-warning text-dark">Buddies VIP Member</span></p>
+                        <p class="mb-0"><strong>Account Created:</strong> <span id="profile-created-date">Today</span></p>
+                    </div>
+
+                    <button id="logout-btn" class="btn btn-danger w-100 py-2">Log Out</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-3 text-center mt-auto">
+        <p class="mb-0">Team Buddies: Tomiris Zhumagazy, Merey Abdymanap, Yenlik Serikkali</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
