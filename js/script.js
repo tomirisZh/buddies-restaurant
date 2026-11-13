@@ -122,16 +122,6 @@ const BuddiesRestaurantApp = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            const isDark = document.body.classList.contains('dark-theme');
-            themeBtn.textContent = isDark ? "🌙 Night" : "☀️ Day";
-            themeBtn.className = isDark ? "btn btn-sm btn-warning" : "btn btn-sm btn-outline-light";
-        });
-    }
-
     const readMoreBtns = document.querySelectorAll('.read-more-btn');
     readMoreBtns.forEach(btn => {
         btn.addEventListener('click', () => {
