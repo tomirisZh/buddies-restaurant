@@ -313,24 +313,24 @@ $(document).ready(function() {
     const searchSuggestions = [
         "Signature Ribeye Steak", "Creamy Fettuccine Pasta", "Berry Cheesecake",
         "Salmon Steak with Vegetables", "Classic Beshbarmak", "Aperol Spritz Cocktail",
-        "Table Reservation", "Contact Information", "Working Hours", "VIP Banquet Hall"
     ];
-
-    const $searchInput = $('#autocomplete-search');
+    const $searchInput = $('#live-search-input');
     if ($searchInput.length > 0) {
+        if (!$searchInput.parent().hasClass('search-wrapper')) {
+            $searchInput.wrap('<div class="search-wrapper position-relative"></div>');
+        }
+        if ($('#autocomplete-list').length === 0) {
+            $searchInput.after('<div id="autocomplete-list" class="autocomplete-dropdown d-none"></div>');
+        }
         $searchInput.attr('autocomplete', 'off');
-        $searchInput.after('<div id="autocomplete-list" class="autocomplete-dropdown d-none"></div>');
-        
         $searchInput.on('keyup', function() {
             const val = $(this).val().toLowerCase();
             const $list = $('#autocomplete-list');
             $list.empty();
-
             if (!val) {
                 $list.addClass('d-none');
                 return;
             }
-
             const matches = searchSuggestions.filter(item => item.toLowerCase().includes(val));
             if (matches.length > 0) {
                 matches.forEach(match => {
@@ -341,15 +341,12 @@ $(document).ready(function() {
                 $list.addClass('d-none');
             }
         });
-
         $(document).on('click', '.autocomplete-item', function() {
-            $searchInput.val($(this).text());
+            $searchInput.val($(this).text()).trigger('keyup');
             $('#autocomplete-list').addClass('d-none');
-            showToast(`Selected: $(this).text()`);
         });
-
         $(document).on('click', function(e) {
-            if (!$(e.target).closest('#autocomplete-search, #autocomplete-list').length) {
+            if (!$(e.target).closest('#live-search-input, #autocomplete-list').length) {
                 $('#autocomplete-list').addClass('d-none');
             }
         });
