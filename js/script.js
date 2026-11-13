@@ -53,7 +53,7 @@ $(document).ready(function () {
         } else {
             $('#auth-forms-container').removeClass('d-none');
             $('#profile-dashboard').addClass('d-none');
-            $('#nav-profile-link').text('Profile / Login');
+            $('#nav-profile-link').text('Profile');
         }
     }
     checkAuthStatus();
