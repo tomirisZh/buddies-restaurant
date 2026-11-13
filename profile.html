@@ -56,14 +56,8 @@
                 </div>
             </div>
         </section>
-
-        <!-- Authentication & Profile Forms Section -->
         <div class="row justify-content-center">
-            
-            <!-- Auth Container (Visible when logged out) -->
             <div class="col-md-6 col-lg-5" id="auth-forms-container">
-                
-                <!-- SIGN UP FORM WRAPPER -->
                 <div class="card shadow-sm p-4" id="signup-wrapper">
                     <h3 class="text-brand mb-3 text-center">Create Account</h3>
                     <form id="signup-form" novalidate>
@@ -93,8 +87,6 @@
                         <p class="text-muted mb-0">Already have an account? <a href="#" id="show-login-btn" class="text-brand fw-bold text-decoration-underline">Log In</a></p>
                     </div>
                 </div>
-
-                <!-- LOG IN FORM WRAPPER (Hidden by default) -->
                 <div class="card shadow-sm p-4 d-none" id="login-wrapper">
                     <h3 class="text-brand mb-3 text-center">Welcome Back</h3>
                     <form id="login-form" novalidate>
@@ -116,8 +108,6 @@
                 </div>
 
             </div>
-
-            <!-- Profile Dashboard (Visible when logged in) -->
             <div class="col-lg-8 d-none" id="profile-dashboard">
                 <div class="card shadow-sm p-4 text-center">
                     <div class="mb-3">
@@ -127,9 +117,9 @@
                     <p class="text-muted mb-3" id="profile-display-email">user@example.com</p>
                     
                     <div class="bg-light p-3 rounded mb-4 text-start">
-                        <p class="mb-2"><strong>📱 Phone:</strong> <span id="profile-display-phone">+7 (000) 000-00-00</span></p>
-                        <p class="mb-2"><strong>⭐ Member Status:</strong> <span class="badge bg-warning text-dark">Buddies VIP Member</span></p>
-                        <p class="mb-0"><strong>🗓️ Account Created:</strong> <span id="profile-created-date">Today</span></p>
+                        <p class="mb-2"><strong>Phone:</strong> <span id="profile-display-phone">+7 (000) 000-00-00</span></p>
+                        <p class="mb-2"><strong>Member Status:</strong> <span class="badge bg-warning text-dark">Buddies VIP Member</span></p>
+                        <p class="mb-0"><strong>Account Created:</strong> <span id="profile-created-date">Today</span></p>
                     </div>
 
                     <button id="logout-btn" class="btn btn-danger w-100 py-2">Log Out</button>
