@@ -10,6 +10,10 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
             <div class="container-fluid">
@@ -21,10 +25,10 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav gap-2 align-items-center">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
                         <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                        <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="reservation.html">Reservation</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="profile.html" id="nav-profile-link">Profile</a></li>
                         <li class="nav-item ms-lg-2">
@@ -40,9 +44,10 @@
         <section class="text-center mb-5">
             <h2 class="text-brand">Table Reservation & Services</h2>
             <p class="text-muted">Plan your visit in advance to enjoy a smooth dining experience with us.</p>
-            <img src="images/restaurant-banner.jfif" alt="Cozy dining table setup" class="img-fluid rounded shadow-sm mt-2" style="max-height: 350px; width: 100%; object-fit: cover;">
+            <img src="images/restaurant-banner.jfif" alt="Cozy dining table setup" class="img-fluid rounded shadow-sm mt-2 banner-img">
         </section>
 
+        <!-- Туториал және сервистер блогы -->
         <section class="row g-4 mb-5">
             <div class="col-md-6">
                 <div class="p-4 bg-light rounded border h-100">
@@ -55,7 +60,6 @@
                     </ol>
                 </div>
             </div>
-
             <div class="col-md-6">
                 <div class="p-4 bg-light rounded border h-100">
                     <h3 class="text-brand h4 mb-3">Included Dining Services</h3>
@@ -69,20 +73,44 @@
             </div>
         </section>
 
-        <section class="bg-light p-4 rounded border">
-            <h3 class="text-brand mb-3">Quick Table Booking Form</h3>
-            <form class="custom-form">
+        <!-- Бронь формасы (Барлық блоктарға астынан ошибка шығатын спандар қосылды) -->
+        <section class="bg-light p-4 p-md-5 rounded border mb-5">
+            <h3 class="text-brand mb-3">Table Booking & Pre-Order Form</h3>
+            <form id="order-form" novalidate>
                 <div class="row g-3">
                     <div class="col-md-6">
-                        <label class="form-label fw-bold">Your Name</label>
-                        <input type="text" class="form-control" placeholder="Enter name" required>
+                        <label for="full-name" class="form-label fw-bold">Full Name *</label>
+                        <input type="text" class="form-control" id="full-name" placeholder="Enter your full name">
+                        <span id="name-error" class="error-message text-danger small"></span>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label fw-bold">Date & Time</label>
-                        <input type="datetime-local" class="form-control" required>
+                        <label for="email" class="form-label fw-bold">Email Address *</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        <span id="email-error" class="error-message text-danger small"></span>
                     </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-brand w-100">Book Table</button>
+                    <div class="col-md-6">
+                        <label for="reservation-date" class="form-label fw-bold">Reservation Date & Time *</label>
+                        <input type="datetime-local" class="form-control" id="reservation-date">
+                        <span id="date-error" class="error-message text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="guest-count" class="form-label fw-bold">Number of Guests *</label>
+                        <input type="number" class="form-control" id="guest-count" min="1" max="20" value="2">
+                        <span id="guests-error" class="error-message text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="access-code" class="form-label fw-bold">Order Code (Min 6 chars) *</label>
+                        <input type="password" class="form-control" id="access-code" placeholder="Create a code">
+                        <span id="pass-error" class="error-message text-danger small"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="confirm-code" class="form-label fw-bold">Confirm Code *</label>
+                        <input type="password" class="form-control" id="confirm-code" placeholder="Repeat your code">
+                        <span id="confirm-error" class="error-message text-danger small"></span>
+                    </div>
+                    <div class="col-12 d-flex gap-2 mt-4">
+                        <button type="submit" class="btn btn-brand flex-grow-1">Book Table & Submit Order</button>
+                        <button type="button" id="reset-form-btn" class="btn btn-outline-secondary">Reset Form</button>
                     </div>
                 </div>
             </form>

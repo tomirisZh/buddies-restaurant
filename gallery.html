@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +9,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-brand px-3 px-lg-5">
@@ -22,12 +26,12 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav gap-2 align-items-center">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
-                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="reservation.html">Reservation</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.html" id="nav-profile-link">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
                         <li class="nav-item ms-lg-2">
                             <button id="theme-toggle-btn" class="btn btn-sm btn-outline-light">☀️ Day</button>
                         </li>
@@ -42,6 +46,8 @@
             <h2 class="text-brand">Restaurant Gallery</h2>
             <p class="text-muted">Take a look at our restaurant atmosphere, special dishes, and cozy events.</p>
         </div>
+
+        <!-- Bootstrap Carousel (9 Images) -->
         <section class="mb-5">
             <div id="restaurantCarousel" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -58,55 +64,55 @@
 
                 <div class="carousel-inner" style="height: 480px;">
                     <div class="carousel-item active h-100">
-                        <img src="images/gallery1.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery1.jpg" style="object-fit: cover;" alt="Cozy Interior">
+                        <img src="images/gallery1.jpg" class="d-block w-100 h-100 carousel-img" alt="Cozy Interior">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Cozy Interior & Dining Area</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery2.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery2.jpg" style="object-fit: cover;" alt="Special Dishes">
+                        <img src="images/gallery2.jpg" class="d-block w-100 h-100 carousel-img" alt="Special Dishes">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Chef's Special Dishes</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery3.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery3.jpg" style="object-fit: cover;" alt="Bar">
+                        <img src="images/gallery3.jpg" class="d-block w-100 h-100 carousel-img" alt="Bar">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Atmospheric Bar</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery4.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery4.jpg" style="object-fit: cover;" alt="Summer Terrace">
+                        <img src="images/gallery4.jpg" class="d-block w-100 h-100 carousel-img" alt="Summer Terrace">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Summer Outdoor Terrace</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery5.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery5.jpg" style="object-fit: cover;" alt="Signature Desserts">
+                        <img src="images/gallery5.jpg" class="d-block w-100 h-100 carousel-img" alt="Signature Desserts">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Signature Desserts</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery6.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery6.jpg" style="object-fit: cover;" alt="Coffee & Drinks">
+                        <img src="images/gallery6.jpg" class="d-block w-100 h-100 carousel-img" alt="Coffee & Drinks">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Artisanal Drinks & Coffee</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery7.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery7.jpg" style="object-fit: cover;" alt="Chef at Work">
+                        <img src="images/gallery7.jpg" class="d-block w-100 h-100 carousel-img" alt="Chef at Work">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Kitchen Magic in Action</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery8.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery8.jpg" style="object-fit: cover;" alt="VIP Hall">
+                        <img src="images/gallery8.jpg" class="d-block w-100 h-100 carousel-img" alt="VIP Hall">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>VIP Celebration Hall</h5>
                         </div>
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/gallery9.jpg" class="d-block w-100 h-100 lazy-load" data-src="images/gallery9.jpg" style="object-fit: cover;" alt="Window Seating">
+                        <img src="images/gallery9.jpg" class="d-block w-100 h-100 carousel-img" alt="Window Seating">
                         <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
                             <h5>Evening Window Seats</h5>
                         </div>
@@ -121,8 +127,10 @@
                 </button>
             </div>
         </section>
+
+        <!-- Developer Profile Section -->
         <section class="bg-light p-4 rounded border d-flex align-items-center gap-3">
-            <img src="images/merey.jpg" alt="Developer Merey" class="avatar-round">
+            <img src="images/merey.jpg" alt="Developer Merey" class="avatar-round" style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%;">
             <div>
                 <h4 class="text-brand m-0">Merey Abdymanap</h4>
                 <p class="text-muted small mb-0">Hi, I am Merey! I developed the Menu and Gallery pages for Buddies Restaurant using Bootstrap Grid, Carousel, and jQuery components.</p>
