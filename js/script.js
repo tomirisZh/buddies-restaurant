@@ -1,8 +1,3 @@
-/* ==========================================================================
-   Buddies Restaurant — единый скрипт
-   ========================================================================== */
-
-
 const BuddiesRestaurantApp = {
     name: "Buddies Restaurant",
     location: "Astana, Kazakhstan",
@@ -64,15 +59,10 @@ const BuddiesRestaurantApp = {
         "Fact: We source all our organic vegetables from local farmers near Astana.",
         "Chef's Secret: Our Ribeye Steak is aged for 21 days before grilling.",
         "Fun Fact: Over 10,000 Aperol Spritz cocktails were served at Buddies last year!",
-        "Bon appétit! May your meal be as wonderful as your company.",
-        "Good food, good mood! Enjoy every single delicious bite.",
         "Eat well, live well! Our signature dishes are prepared with absolute passion.",
-        "As bolsyn! (Enjoy your meal!) May this traditional food bring you warmth and joy.",
-        "The secret ingredient in all our recipes is love, fresh ingredients, and dedication.",
-        "Good food is the foundation of genuine happiness and unforgettable evenings."
+        "The secret ingredient in all our recipes is love, fresh ingredients, and dedication."
     ]
 };
-
 
 
 /* ==========================================================================
@@ -273,11 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
 $(document).ready(function () {
 
     console.log("Buddies Restaurant JS & jQuery initialized successfully.");
-
-    // =====================================================
     // 1. ТЁМНАЯ / СВЕТЛАЯ ТЕМА
-    // =====================================================
-
+    
     const savedTheme = localStorage.getItem('buddies_theme') || 'light';
 
     if (savedTheme === 'dark') {
@@ -301,9 +288,7 @@ $(document).ready(function () {
             .toggleClass('btn-warning btn-outline-light');
     });
 
-    // =====================================================
     // 2. ПРОГРЕСС-БАР СКРОЛЛА
-    // =====================================================
 
     if ($('#scroll-progress-bar').length === 0) {
         $('body').prepend(`
@@ -324,9 +309,7 @@ $(document).ready(function () {
         $('#scroll-progress-bar').css('width', scrollPercent + '%');
     });
 
-    // =====================================================
     // 3. TOAST-УВЕДОМЛЕНИЯ
-    // =====================================================
 
     if ($('#toast-container').length === 0) {
         $('body').append('<div id="toast-container"></div>');
@@ -344,231 +327,236 @@ $(document).ready(function () {
             setTimeout(() => toast.remove(), 300);
         }, 3000);
     };
-        // =====================================================
+
     // 4. АВТОРИЗАЦИЯ И ПЕРЕКЛЮЧЕНИЕ ФОРМ
-    // =====================================================
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^[78]\d{10}$/; 
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^7\d{10}$/;
-
-    // Создание маленьких сообщений об ошибках
-    function getAuthError(inputId, errorId) {
-        let error = document.getElementById(errorId);
-
-        if (!error) {
-            const input = document.getElementById(inputId);
-            if (!input) return null;
-
-            error = document.createElement('small');
-            error.id = errorId;
-            error.className = 'auth-field-error';
-            error.style.display = 'block';
-            error.style.color = '#dc3545';
-            error.style.fontSize = '12px';
-            error.style.marginTop = '4px';
-
-            input.insertAdjacentElement('afterend', error);
-        }
-
-        return error;
-    }
-
-    function showAuthError(inputId, errorId, message) {
-        const input = document.getElementById(inputId);
-        const error = getAuthError(inputId, errorId);
-
-        if (error) error.textContent = message;
-        if (input) input.classList.add('is-invalid');
-    }
-
-    function clearAuthError(inputId, errorId) {
-        const input = document.getElementById(inputId);
-        const error = document.getElementById(errorId);
-
-        if (error) error.textContent = '';
-        if (input) input.classList.remove('is-invalid');
-    }
-
-    // Очищаем ошибки при вводе
-    const authFields = [
-        ['signup-name', 'signup-name-error'],
-        ['signup-email', 'signup-email-error'],
-        ['signup-phone', 'signup-phone-error'],
-        ['signup-password', 'signup-password-error'],
-        ['login-email', 'login-email-error'],
-        ['login-password', 'login-password-error']
-    ];
-
-    authFields.forEach(([inputId, errorId]) => {
-        const input = document.getElementById(inputId);
-
-        if (input) {
-            getAuthError(inputId, errorId);
-
-            input.addEventListener('input', () => {
-                clearAuthError(inputId, errorId);
-            });
-        }
-    });
-
-    // ----- Регистрация -----
-    $('#signup-form').off('submit').on('submit', function (e) {
-        e.preventDefault();
-
-        let valid = true;
-
-        const name = ($('#signup-name').val() || '').trim();
-        const email = ($('#signup-email').val() || '').trim();
-        const phone = ($('#signup-phone').val() || '').trim();
-        const password = $('#signup-password').val() || '';
-
-        clearAuthError('signup-name', 'signup-name-error');
-        clearAuthError('signup-email', 'signup-email-error');
-        clearAuthError('signup-phone', 'signup-phone-error');
-        clearAuthError('signup-password', 'signup-password-error');
-
-        if (!name) {
-            showAuthError('signup-name', 'signup-name-error',
-                'Full name is required.');
-            valid = false;
-        }
-
-        if (!email) {
-            showAuthError('signup-email', 'signup-email-error',
-                'Email is required.');
-            valid = false;
-        } else if (!emailRegex.test(email)) {
-            showAuthError('signup-email', 'signup-email-error',
-                'Please enter a valid email address.');
-            valid = false;
-        }
-
-        const phoneDigits = phone.replace(/\D/g, '');
-
-if (!phone) {
-    showAuthError(
-        'signup-phone',
-        'signup-phone-error',
-        'Phone number is required.'
-    );
-    valid = false;
-} else if (!phoneRegex.test(phoneDigits)) {
-    showAuthError(
-        'signup-phone',
-        'signup-phone-error',
-        'Enter a valid Kazakhstan phone number (+7XXXXXXXXXX).'
-    );
-    valid = false;
-}
+function checkAuthStatus() {
+    const loggedUser = JSON.parse(localStorage.getItem('buddies_logged_user'));
+    if (loggedUser) {
+        $('#auth-forms-container').addClass('d-none');
+        $('#profile-dashboard').removeClass('d-none');
+        $('#profile-display-name').text(loggedUser.name);
+        $('#profile-display-email').text(loggedUser.email);
+        $('#profile-display-phone').text(loggedUser.phone || 'Not provided');
+        $('#profile-created-date').text(loggedUser.createdDate || 'Today');
         
+        const firstName = loggedUser.name ? loggedUser.name.split(' ')[0] : 'User';
+        $('#nav-profile-link').text(`Account (${firstName})`);
+    } else {
+        $('#auth-forms-container').removeClass('d-none');
+        $('#profile-dashboard').addClass('d-none');
+        $('#nav-profile-link').text('Profile');
+    }
+}
 
-        if (!password.trim()) {
-            showAuthError('signup-password', 'signup-password-error',
-                'Password is required.');
-            valid = false;
-        } else if (password.length < 6) {
-            showAuthError('signup-password', 'signup-password-error',
-                'Password must be at least 6 characters.');
-            valid = false;
-        }
+checkAuthStatus();
 
-        if (!valid) return;
+$('#show-login-btn').off('click').on('click', function(e) {
+    e.preventDefault();
+    $('#signup-wrapper').addClass('d-none');
+    $('#login-wrapper').removeClass('d-none');
+    $('.error-message, .auth-field-error').text('');
+    $('.is-invalid').removeClass('is-invalid');
+});
 
-        const users = JSON.parse(
-            localStorage.getItem('buddies_users') || '[]'
-        );
+$('#show-signup-btn').off('click').on('click', function(e) {
+    e.preventDefault();
+    $('#login-wrapper').addClass('d-none');
+    $('#signup-wrapper').removeClass('d-none');
+    $('.error-message, .auth-field-error').text('');
+    $('.is-invalid').removeClass('is-invalid');
+});
 
-        const existingUser = users.find(
-            user => user.email.toLowerCase() === email.toLowerCase()
-        );
+function getAuthError(inputId, errorId) {
+    let error = document.getElementById(errorId);
 
-        if (existingUser) {
-            showAuthError('signup-email', 'signup-email-error',
-                'An account with this email already exists.');
-            return;
-        }
+    if (!error) {
+        const input = document.getElementById(inputId);
+        if (!input) return null;
 
-        const newUser = {
-            name: name,
-            email: email,
-            phone: phone,
-            password: password,
-            createdDate: new Date().toLocaleDateString()
-        };
+        error = document.createElement('small');
+        error.id = errorId;
+        error.className = 'auth-field-error';
+        error.style.display = 'block';
+        error.style.color = '#dc3545';
+        error.style.fontSize = '12px';
+        error.style.marginTop = '4px';
 
-        users.push(newUser);
+        input.insertAdjacentElement('afterend', error);
+    }
 
-        localStorage.setItem('buddies_users', JSON.stringify(users));
-        localStorage.setItem('buddies_logged_user', JSON.stringify(newUser));
+    return error;
+}
 
-        alert('Account created successfully!');
+function showAuthError(inputId, errorId, message) {
+    const input = document.getElementById(inputId);
+    const error = getAuthError(inputId, errorId);
+
+    if (error) error.textContent = message;
+    if (input) input.classList.add('is-invalid');
+}
+
+function clearAuthError(inputId, errorId) {
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+
+    if (error) error.textContent = '';
+    if (input) input.classList.remove('is-invalid');
+}
+
+const authFields = [
+    ['signup-name', 'signup-name-error'],
+    ['signup-email', 'signup-email-error'],
+    ['signup-phone', 'signup-phone-error'],
+    ['signup-password', 'signup-password-error'],
+    ['login-email', 'login-email-error'],
+    ['login-password', 'login-password-error']
+];
+
+authFields.forEach(([inputId, errorId]) => {
+    const input = document.getElementById(inputId);
+
+    if (input) {
+        getAuthError(inputId, errorId);
+
+        input.addEventListener('input', () => {
+            clearAuthError(inputId, errorId);
+        });
+    }
+});
+
+//Регистрация
+$('#signup-form').off('submit').on('submit', function (e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    const name = ($('#signup-name').val() || '').trim();
+    const email = ($('#signup-email').val() || '').trim();
+    const phone = ($('#signup-phone').val() || '').trim();
+    const password = $('#signup-password').val() || '';
+
+    clearAuthError('signup-name', 'signup-name-error');
+    clearAuthError('signup-email', 'signup-email-error');
+    clearAuthError('signup-phone', 'signup-phone-error');
+    clearAuthError('signup-password', 'signup-password-error');
+
+    if (!name) {
+        showAuthError('signup-name', 'signup-name-error', 'Full name is required.');
+        valid = false;
+    }
+
+    if (!email) {
+        showAuthError('signup-email', 'signup-email-error', 'Email is required.');
+        valid = false;
+    } else if (!emailRegex.test(email)) {
+        showAuthError('signup-email', 'signup-email-error', 'Please enter a valid email address.');
+        valid = false;
+    }
+
+    let phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length === 11 && phoneDigits.startsWith('8')) {
+        phoneDigits = '7' + phoneDigits.substring(1);
+    }
+
+    if (!phone) {
+        showAuthError('signup-phone', 'signup-phone-error', 'Phone number is required.');
+        valid = false;
+    } else if (!phoneRegex.test(phoneDigits)) {
+        showAuthError('signup-phone', 'signup-phone-error', 'Enter a valid Kazakhstan phone number (+7XXXXXXXXXX).');
+        valid = false;
+    }
+
+    if (!password.trim()) {
+        showAuthError('signup-password', 'signup-password-error', 'Password is required.');
+        valid = false;
+    } else if (password.length < 6) {
+        showAuthError('signup-password', 'signup-password-error', 'Password must be at least 6 characters.');
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    const users = JSON.parse(localStorage.getItem('buddies_users') || '[]');
+
+    const existingUser = users.find(
+        user => user.email.toLowerCase() === email.toLowerCase()
+    );
+
+    if (existingUser) {
+        showAuthError('signup-email', 'signup-email-error', 'An account with this email already exists.');
+        return;
+    }
+
+    const newUser = {
+        name: name,
+        email: email,
+        phone: phone,
+        password: password,
+        createdDate: new Date().toLocaleDateString()
+    };
+
+    users.push(newUser);
+
+    localStorage.setItem('buddies_users', JSON.stringify(users));
+    localStorage.setItem('buddies_logged_user', JSON.stringify(newUser));
+
+    alert('Account created successfully!');
+    checkAuthStatus();
+});
+
+//Вход
+$('#login-form').off('submit').on('submit', function (e) {
+    e.preventDefault();
+
+    let valid = true;
+
+    const email = ($('#login-email').val() || '').trim();
+    const password = $('#login-password').val() || '';
+
+    clearAuthError('login-email', 'login-email-error');
+    clearAuthError('login-password', 'login-password-error');
+
+    if (!email) {
+        showAuthError('login-email', 'login-email-error', 'Email is required.');
+        valid = false;
+    } else if (!emailRegex.test(email)) {
+        showAuthError('login-email', 'login-email-error', 'Please enter a valid email address.');
+        valid = false;
+    }
+
+    if (!password.trim()) {
+        showAuthError('login-password', 'login-password-error', 'Password is required.');
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    const users = JSON.parse(localStorage.getItem('buddies_users') || '[]');
+
+    const user = users.find(
+        u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+    );
+
+    if (user) {
+        localStorage.setItem('buddies_logged_user', JSON.stringify(user));
+
+        alert(`Welcome back, ${user.name}!`);
         checkAuthStatus();
-    });
+    } else {
+        showAuthError('login-password', 'login-password-error', 'Invalid email or password.');
+    }
+});
 
-    // ----- Вход -----
-    $('#login-form').off('submit').on('submit', function (e) {
-        e.preventDefault();
+//Выход
+$('#logout-btn').off('click').on('click', function () {
+    localStorage.removeItem('buddies_logged_user');
+    checkAuthStatus();
+});
 
-        let valid = true;
-
-        const email = ($('#login-email').val() || '').trim();
-        const password = $('#login-password').val() || '';
-
-        clearAuthError('login-email', 'login-email-error');
-        clearAuthError('login-password', 'login-password-error');
-
-        if (!email) {
-            showAuthError('login-email', 'login-email-error',
-                'Email is required.');
-            valid = false;
-        } else if (!emailRegex.test(email)) {
-            showAuthError('login-email', 'login-email-error',
-                'Please enter a valid email address.');
-            valid = false;
-        }
-
-        if (!password.trim()) {
-            showAuthError('login-password', 'login-password-error',
-                'Password is required.');
-            valid = false;
-        }
-
-        if (!valid) return;
-
-        const users = JSON.parse(
-            localStorage.getItem('buddies_users') || '[]'
-        );
-
-        const user = users.find(
-            u => u.email.toLowerCase() === email.toLowerCase() &&
-                 u.password === password
-        );
-
-        if (user) {
-            localStorage.setItem(
-                'buddies_logged_user',
-                JSON.stringify(user)
-            );
-
-            alert(`Welcome back, ${user.name}!`);
-            checkAuthStatus();
-        } else {
-            showAuthError('login-password', 'login-password-error',
-                'Invalid email or password.');
-        }
-    });
-
-    // ----- Выход -----
-    $('#logout-btn').off('click').on('click', function () {
-        localStorage.removeItem('buddies_logged_user');
-        checkAuthStatus();
-    });
-
-
-    // =====================================================
     // 5. ФОРМА БРОНИРОВАНИЯ (#order-form)
-    // ЭТА ФОРМА ОТДЕЛЬНА ОТ РЕГИСТРАЦИИ И ВХОДА
-    // =====================================================
 
     const orderForm = document.getElementById('order-form');
 

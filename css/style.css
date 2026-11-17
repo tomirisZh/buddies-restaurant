@@ -35,7 +35,6 @@ footer { background-color: var(--dark-bg); color: #ffffff; }
     font-weight: 500;
 }
 
-/* Суреттер өлшемі мен пішіні (түзетілді) */
 .banner-img {
     width: 100%;
     height: 380px;
@@ -54,7 +53,7 @@ footer { background-color: var(--dark-bg); color: #ffffff; }
     object-fit: cover !important;
 }
 
-/* Аватарка (блок о себе - идеально круглый портрет) */
+/* Аватарка */
 .avatar-round {
     width: 70px !important;
     height: 70px !important;
